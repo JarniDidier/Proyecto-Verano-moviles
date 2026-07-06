@@ -1,0 +1,73 @@
+<!-- Pantalla de Juego Terminado -->
+<section class="juego-terminado" aria-label="Pantalla de juego terminado">
+  <mat-drawer-container class="juego-terminado__drawer-container" autosize>
+    <!-- DRAWER -->
+    <mat-drawer #drawer class="juego-terminado__drawer" mode="over" position="start" [opened]="drawerOpen"
+      (closedStart)="drawerOpen = false">
+      <!-- Sidebar: mismos inputs/outputs que Home -->
+      <app-left-sidebar [isLogin]="isLogin" (closeSidebar)="closeSidebar()"></app-left-sidebar>
+    </mat-drawer>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <mat-drawer-content class="juego-terminado__content">
+      <!-- Header: mismo output que Home -->
+      <app-header-app (menuToggle)="toggleSidebar()"></app-header-app>
+
+      <!-- Contenido de la pantalla -->
+      <main class="body-juego-terminado" role="main">
+
+        <div class="juego-terminado__inner">
+          <!-- Título / eslogan -->
+          <section class="section-title" aria-label="Título de la pantalla">
+            <div class="eslogan">
+              <div class="line-color">
+                <div class="vertical-line"></div>
+              </div>
+              <div class="title-link">
+                <span>¡Excelente carrera!</span>
+              </div>
+            </div>
+          </section>
+
+          <!-- Insignia / resultado visual -->
+          <section class="section-badge" aria-label="Insignia de resultado">
+            <div class="badge-shape" role="img" aria-label="Insignia de carrera completada"></div>
+          </section>
+
+          <!-- Puntaje obtenido -->
+          <section class="section-puntaje" aria-label="Puntaje obtenido">
+            <span class="txt-obtuviste">Obtuviste</span>
+            <span class="txt-puntos">{{ puntosObtenidos }}</span>
+            <span class="txt-label">puntos</span>
+          </section>
+
+          <!-- Mensaje / descripción -->
+          <section class="section-descripcion" aria-label="Mensaje de agradecimiento">
+            <p class="txt-descripcion">
+              Gracias por participar, acumula más puntos y gana una increíble
+              <strong>{{ premio }}</strong>.
+            </p>
+          </section>
+
+          <!-- Acción principal -->
+          <section class="actions" aria-label="Acción principal">
+            <button mat-flat-button type="button" color="warn" class="btn-inicio" (click)="irAlInicio()"
+              [disabled]="isLoading">
+              @if (!isLoading) {
+              <span class="text-btn">Ir al inicio</span>
+              } @else {
+              <span class="text-btn">Cargando...</span>
+              }
+            </button>
+          </section>
+        </div><!-- /juego-terminado__inner -->
+
+        <!-- Footer FULL WIDTH (fuera del inner) -->
+        <section class="footer" aria-label="Pie de página">
+          <app-footer-app [showLicensed]="showLicensed"></app-footer-app>
+        </section>
+
+      </main>
+    </mat-drawer-content>
+  </mat-drawer-container>
+</section>

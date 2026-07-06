@@ -11,6 +11,9 @@ import { Router } from '@angular/router';
 })
 export class RegistroScreen implements OnInit {
 
+  private readonly storageKey = 'usuarioRegistrado';
+  private readonly storageListKey = 'usuariosRegistrados';
+
   public user!: RegistroUser;
   public errors: RegistroErrors = {};
   public isLoading = false;
@@ -113,7 +116,21 @@ export class RegistroScreen implements OnInit {
     }
 
     this.isLoading = true;
-    console.log('Registro exitoso enviado al backend:', this.user);
+    localStorage.setItem(this.storageKey, JSON.stringify(this.user));
+
+    const usuariosRegistrados = this.leerUsuariosRegistrados();
+    const existente = usuariosRegistrados.findIndex(usuario =>
+      usuario.email.trim().toLowerCase() === this.user.email.trim().toLowerCase()
+    );
+
+    if (existente >= 0) {
+      usuariosRegistrados[existente] = this.user;
+    } else {
+      usuariosRegistrados.push(this.user);
+    }
+
+    localStorage.setItem(this.storageListKey, JSON.stringify(usuariosRegistrados));
+    this.router.navigate(['/app/perfil-usuario']);
   }
 
   public terminosCondiciones(): void {
@@ -122,5 +139,19 @@ export class RegistroScreen implements OnInit {
 
   public goLogin(): void {
     this.router.navigate(['']);
+  }
+
+  private leerUsuariosRegistrados(): RegistroUser[] {
+    const datosGuardados = localStorage.getItem(this.storageListKey);
+
+    if (!datosGuardados) {
+      return [];
+    }
+
+    try {
+      return JSON.parse(datosGuardados) as RegistroUser[];
+    } catch {
+      return [];
+    }
   }
 }

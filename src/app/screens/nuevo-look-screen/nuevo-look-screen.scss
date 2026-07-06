@@ -1,0 +1,292 @@
+/* =========================================================
+   NUEVO LOOK - BASE (mobile-first)
+   ========================================================= */
+
+.nuevo-look {
+  width: 100%;
+  min-height: 100vh;
+  background: #ffffff;
+}
+
+.nuevo-look__drawer-container {
+  height: 100vh;
+  background: #ffffff;
+}
+
+.nuevo-look__drawer {
+  width: 85vw;
+  max-width: 340px;
+  border-right: 0;
+}
+
+.nuevo-look__content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+}
+
+/* Scroll como Home */
+.body-nuevo-look {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: #ffffff;
+}
+
+/* Contenedor centrado (solo contenido) */
+.nuevo-look__inner {
+  width: 100%;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 15px 24px 15px;
+}
+
+/* =========================================================
+   TÍTULO
+   ========================================================= */
+.section-title {
+  border-top: 1px solid rgba(122, 122, 122, 0.12);
+  display: flex;
+  justify-content: center;
+  padding: 14px 0;
+  margin-bottom: 20px;
+}
+
+.eslogan {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.line-color {
+  width: 18px;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.vertical-line {
+  width: 5px;
+  background-color: #cd0000;
+  height: 60px;
+}
+
+.title-link {
+  font-family: Avenir-Bold;
+  font-size: 20px;
+  color: #000000;
+  text-transform: uppercase;
+}
+
+/* =========================================================
+   PREGUNTA
+   ========================================================= */
+.section-pregunta {
+  margin-bottom: 1.75rem;
+}
+
+.txt-pregunta {
+  margin: 0;
+  font-family: Avenir;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #000000;
+}
+
+/* =========================================================
+   LISTA DE LENTES
+   ========================================================= */
+.section-lentes {
+  margin-bottom: 2rem;
+}
+
+.lentes-lista {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.75rem;
+}
+
+.lente-card {
+  width: 100%;
+  max-width: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+
+  background: transparent;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  padding: 10px;
+  cursor: pointer;
+
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.03);
+  }
+
+  &:focus-visible {
+    outline: 2px solid rgba(0, 0, 0, 0.45);
+    outline-offset: 3px;
+  }
+}
+
+.lente-card--activa {
+  border-color: #cd0000;
+  background-color: rgba(205, 0, 0, 0.04);
+}
+
+.lente-card__img-wrap {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.lente-card__img {
+  width: 100%;
+  max-width: 260px;
+  height: auto;
+  object-fit: contain;
+}
+
+.lente-card__nombre {
+  font-family: Avenir-Bold;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  color: #000000;
+  text-transform: uppercase;
+}
+
+/* =========================================================
+   ACCIONES
+   ========================================================= */
+.section-actions {
+  padding-bottom: 24px;
+}
+
+.actions {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-top: 0.5rem;
+}
+
+.btn-omitir {
+  background: transparent;
+  border: 0;
+  padding: 8px 4px;
+  cursor: pointer;
+
+  &:focus-visible {
+    outline: 2px solid rgba(0, 0, 0, 0.45);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+
+  &:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+  }
+}
+
+.text-omitir {
+  font-family: Avenir-Bold;
+  font-size: 16px;
+  letter-spacing: 0.4px;
+  color: #cd0000;
+  text-transform: uppercase;
+}
+
+.btn-usar {
+  min-width: 188px;
+  height: 40px;
+  border-radius: 0;
+}
+
+/* Material button (rojo) */
+:host ::ng-deep button.btn-usar.mat-mdc-unelevated-button {
+  background-color: #cd0000 !important;
+  color: #ffffff !important;
+
+  --mdc-filled-button-container-color: #cd0000;
+  --mdc-filled-button-label-text-color: #ffffff;
+
+  font-family: Avenir, sans-serif !important;
+  font-size: 16px;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+
+.mat-mdc-button-disabled {
+  background: #cd0000 !important;
+  opacity: 0.55 !important;
+}
+
+/* =========================================================
+   FOOTER FULL WIDTH (pegado a bordes)
+   ========================================================= */
+.footer {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.footer app-footer-app {
+  display: block;
+  width: 100%;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+@media (min-width: 768px) {
+  .nuevo-look__drawer {
+    width: 360px;
+  }
+
+  .nuevo-look__inner {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .title-link {
+    font-size: 22px;
+  }
+
+  .lentes-lista {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  .lente-card {
+    width: calc(50% - 1.75rem);
+    max-width: 280px;
+  }
+}
+
+@media (min-width: 992px) {
+  .nuevo-look__inner {
+    max-width: 1040px;
+  }
+
+  .title-link {
+    font-size: 24px;
+  }
+
+  .lente-card {
+    width: calc(33.333% - 1.75rem);
+  }
+
+  .actions {
+    justify-content: center;
+    gap: 48px;
+  }
+}

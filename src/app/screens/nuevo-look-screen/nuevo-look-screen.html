@@ -1,0 +1,83 @@
+<!-- Pantalla Nuevo Look -->
+<section class="nuevo-look" aria-label="Pantalla de nuevo look">
+  <mat-drawer-container class="nuevo-look__drawer-container" autosize>
+    <!-- DRAWER -->
+    <mat-drawer #drawer class="nuevo-look__drawer" mode="over" position="start" [opened]="drawerOpen"
+      (closedStart)="drawerOpen = false">
+      <!-- Sidebar: mismos inputs/outputs que Home -->
+      <app-left-sidebar [isLogin]="isLogin" (closeSidebar)="closeSidebar()"></app-left-sidebar>
+    </mat-drawer>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <mat-drawer-content class="nuevo-look__content">
+      <!-- Header: mismo output que Home -->
+      <app-header-app (menuToggle)="toggleSidebar()"></app-header-app>
+
+      <!-- Contenido de la pantalla -->
+      <main class="body-nuevo-look" role="main">
+        <div class="nuevo-look__inner">
+
+          <!-- Título / eslogan -->
+          <section class="section-title" aria-label="Título de la pantalla">
+            <div class="eslogan">
+              <div class="line-color">
+                <div class="vertical-line"></div>
+              </div>
+              <div class="title-link">
+                <span>NUEVO LOOK</span>
+              </div>
+            </div>
+          </section>
+
+          <!-- Pregunta -->
+          <section class="section-pregunta" aria-label="Pregunta">
+            <p class="txt-pregunta">
+              ¿Quieres tener una idea de cómo te verías si usarás unos increíbles Carrera Ducati?
+            </p>
+          </section>
+
+          <!-- Lista de lentes seleccionables -->
+          <section class="section-lentes" aria-label="Selección de lentes">
+            <div class="lentes-lista">
+              @for (lente of lentes; track lente.id) {
+              <button type="button" class="lente-card" [class.lente-card--activa]="lente.id === lenteSeleccionado"
+                (click)="seleccionarLente(lente.id)" [attr.aria-pressed]="lente.id === lenteSeleccionado"
+                [attr.aria-label]="'Seleccionar lente ' + lente.nombre">
+                <span class="lente-card__img-wrap">
+                  <img [src]="lente.img" class="lente-card__img" [alt]="lente.nombre" loading="lazy" decoding="async">
+                </span>
+                <span class="lente-card__nombre">{{ lente.nombre }}</span>
+              </button>
+              }
+            </div>
+          </section>
+
+          <!-- Acciones -->
+          <section class="section-actions" aria-label="Acciones">
+            <div class="actions">
+              <button type="button" class="btn-omitir" (click)="omitir()" [disabled]="isLoading">
+                <span class="text-omitir">Omitir</span>
+              </button>
+
+              <button mat-flat-button type="button" color="warn" class="btn-usar" (click)="usarLentes()"
+                [disabled]="isLoading || !lenteSeleccionado">
+                @if (!isLoading) {
+                <span class="text-btn">Usar lentes</span>
+                } @else {
+                <span class="text-btn">Cargando...</span>
+                }
+              </button>
+            </div>
+          </section>
+
+        </div><!-- /nuevo-look__inner -->
+
+        <!-- Footer FULL WIDTH (fuera del inner) -->
+        <section class="footer" aria-label="Pie de página">
+          <app-footer-app [showLicensed]="showLicensed"></app-footer-app>
+        </section>
+
+      </main>
+    </mat-drawer-content>
+  </mat-drawer-container>
+</section>

@@ -15,6 +15,7 @@ export interface RegistroUser {
   ciudad: string;
   direccion: string;
   estado: string;
+  carrera: string;
   grado_estudios: string;
   edad: number | null;
   terminos_condiciones: boolean;
@@ -60,6 +61,7 @@ export class UsuariosService {
       ciudad: '',
       direccion: '',
       estado: '',
+      carrera: '',
       grado_estudios: '',
       edad: null,
       terminos_condiciones: false,
@@ -121,6 +123,7 @@ export class UsuariosService {
     if (!user.ciudad?.trim()) errors.ciudad = 'La ciudad es obligatoria.';
     if (!user.direccion?.trim()) errors.direccion = 'La dirección es obligatoria.';
     if (!user.estado) errors.estado = 'Selecciona un estado.';
+    if (!user.carrera?.trim()) errors.carrera = 'La carrera es obligatoria.';
     if (!user.grado_estudios) errors.grado_estudios = 'Selecciona tu grado de estudios.';
     if (user.edad === null || user.edad === undefined) errors.edad = 'Seleccione una edad.';
     if (!user.terminos_condiciones) errors.terminos_condiciones = 'Debe aceptar los términos y condiciones.';
@@ -200,6 +203,7 @@ export class UsuariosService {
     if (!this.validator.required(user.ciudad)) errors.ciudad = this.errors.required;
     if (!this.validator.required(user.direccion)) errors.direccion = this.errors.required;
     if (!this.validator.required(user.estado)) errors.estado = this.errors.required;
+    if (!this.validator.required(user.carrera)) errors.carrera = this.errors.required;
     if (!this.validator.required(user.grado_estudios)) errors.grado_estudios = this.errors.required;
 
     // Edad

@@ -1,0 +1,177 @@
+/* =========================================================
+   PERFIL USUARIO SCREEN
+   ========================================================= */
+
+$brand-red: #CD0000;
+$text-black: #000000;
+$surface: #fff8f8;
+$border: #f0d5d5;
+
+:host {
+  display: block;
+}
+
+.perfil-screen {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  background: #fff;
+}
+
+.perfil-drawer-container {
+  min-height: 100dvh;
+  background: #fff;
+}
+
+.perfil-drawer {
+  width: min(280px, 85vw);
+}
+
+.perfil-content {
+  min-height: 100dvh;
+}
+
+.perfil-main {
+  min-height: calc(100dvh - 64px);
+  display: flex;
+  flex-direction: column;
+}
+
+.wrapper {
+  width: 100%;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 1rem;
+}
+
+.perfil-card {
+  width: 100%;
+  max-width: 720px;
+  background: $surface;
+  border: 1px solid $border;
+  border-radius: 24px;
+  padding: 1.25rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+}
+
+.perfil-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.avatar {
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fce8e8;
+  box-shadow: 0 8px 18px rgba(205, 0, 0, 0.16);
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.perfil-title-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.title-login {
+  margin: 0;
+  font-family: Avenir-Bold;
+  font-size: 20px;
+  color: $text-black;
+  text-transform: uppercase;
+}
+
+.subtitle {
+  margin: 0;
+  font-family: Avenir;
+  font-size: 0.95rem;
+  color: #6f6f6f;
+}
+
+.perfil-grid {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.info-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 0.85rem 0.9rem;
+  border-radius: 16px;
+  background: #fff;
+  border: 1px solid #f2e2e2;
+}
+
+.label {
+  font-family: Avenir-Bold;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: $brand-red;
+}
+
+.value {
+  font-family: Avenir;
+  font-size: 1rem;
+  color: $text-black;
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.8rem;
+}
+
+.btn-login {
+  background: $brand-red !important;
+  color: #fff !important;
+  border-radius: 999px !important;
+  padding: 0.4rem 1.2rem !important;
+}
+
+.text-btn {
+  font-family: Avenir-Bold;
+  text-transform: uppercase;
+}
+
+.footer {
+  margin-top: auto;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  overflow: hidden;
+  padding-bottom: 0.5rem;
+}
+
+.footer app-footer-app {
+  display: block;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .wrapper {
+    padding: 2rem;
+  }
+
+  .perfil-card {
+    padding: 1.5rem;
+  }
+}

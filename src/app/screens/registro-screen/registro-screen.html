@@ -137,6 +137,15 @@
           <div class="invalid-feedback">{{ errors.estado }}</div>
           }
 
+          <mat-form-field class="inputs-login" appearance="outline">
+            <mat-label>Carrera</mat-label>
+            <input [(ngModel)]="user.carrera" type="text" matInput placeholder="Ingresa tu carrera"
+              (keypress)="soloLetras($event)">
+          </mat-form-field>
+          @if (errors.carrera) {
+          <div class="invalid-feedback">{{ errors.carrera }}</div>
+          }
+
           <mat-form-field appearance="outline" class="inputs-login">
             <mat-label>Grado de Estudios</mat-label>
             <mat-select [(ngModel)]="user.grado_estudios" name="grado_estudios">

@@ -1,0 +1,31 @@
+<section class="juego-simulado-screen" aria-label="Pantalla de juego simulado">
+  <mat-drawer-container class="juego-simulado-screen__drawer-container" autosize>
+    <mat-drawer #drawer class="juego-simulado-screen__drawer" mode="over" position="start" [opened]="drawerOpen"
+      (closedStart)="drawerOpen = false">
+      <app-left-sidebar [isLogin]="isLogin" (closeSidebar)="closeSidebar()"></app-left-sidebar>
+    </mat-drawer>
+
+    <mat-drawer-content class="juego-simulado-screen__content">
+      <app-header-app (menuToggle)="toggleSidebar()"></app-header-app>
+
+      <main class="juego-simulado-screen__main" role="main">
+        <div class="preview-stage">
+          <img src="assets/images/juego-moto-img.png" alt="Vista de la moto para el juego simulado" />
+        </div>
+
+        <div class="actions-bar">
+          <p class="helper-text">
+            Visualiza el look y continúa cuando estés listo.
+          </p>
+          <button type="button" class="btn-finish" (click)="irAlFinal()">
+            Finalizar juego
+          </button>
+        </div>
+      </main>
+
+      <section class="footer" aria-label="Pie de página">
+        <app-footer-app [showLicensed]="showLicensed"></app-footer-app>
+      </section>
+    </mat-drawer-content>
+  </mat-drawer-container>
+</section>
